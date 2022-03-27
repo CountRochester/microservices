@@ -9,7 +9,7 @@ declare global {
   // eslint-disable-next-line vars-on-top, no-var
   var signin: ({ email, id }?: { email: string, id: string }) => string[]
 }
-jest.mock('../nats-wrapper.ts')
+jest.mock('../nats-wrapper')
 
 let mongo!: MongoMemoryServer
 
