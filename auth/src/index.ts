@@ -12,6 +12,7 @@ const checkEnv = () => {
 
 const start = async (): Promise<void> => {
   try {
+    console.log('Starting up')
     checkEnv()
     await mongoose.connect(process.env.MONGO_URI!)
     console.log('Connected to mongoDB')
