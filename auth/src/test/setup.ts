@@ -29,10 +29,10 @@ beforeEach(async () => {
   }
 })
 
-afterAll(async () => {
-  await mongo.stop()
-  await mongoose.connection.close()
-})
+// afterAll(async () => {
+//   await mongo.stop()
+//   await mongoose.connection.close()
+// })
 
 global.signin = async (): Promise<string[]> => {
   const email = 'test@test.com'
