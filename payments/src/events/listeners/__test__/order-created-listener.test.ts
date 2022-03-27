@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Message } from 'node-nats-streaming';
-import { OrderCreatedEvent, OrderStatus } from '@cygnetops/common';
+import { OrderCreatedEvent, orderStatuses } from '@cr-tickets/common';
 import { natsWrapper } from '../../../nats-wrapper';
 import { OrderCreatedListener } from '../order-created-listener';
 import { Order } from '../../../models/order';
@@ -9,11 +9,11 @@ const setup = async () => {
   const listener = new OrderCreatedListener(natsWrapper.client);
 
   const data: OrderCreatedEvent['data'] = {
-    id: mongoose.Types.ObjectId().toHexString(),
+    id: new mongoose.Types.ObjectId().toHexString(),
     version: 0,
     expiresAt: 'alskdjf',
     userId: 'alskdjf',
-    status: OrderStatus.Created,
+    status: orderStatuses[0],
     ticket: {
       id: 'alskdfj',
       price: 10,
