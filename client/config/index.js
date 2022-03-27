@@ -1,0 +1,2 @@
+export const STRIPE_KEY = 'pk_test_51HjqfzHlUTjYG1DVDnvUncFKUjejDzoHGzHwc7MFBeixqfwsb9dW355oTSY8mmYgYVKp1W5npM9shFTtxVXW3LvQ00PeoFTGPM'
+export const TEST_CARD_NUMBER = '5555555555554444'
