@@ -12,6 +12,7 @@ declare global {
 }
 
 let mongo!: MongoMemoryServer
+jest.setTimeout(30000)
 
 beforeAll(async () => {
   mongo = await MongoMemoryServer.create()
@@ -28,10 +29,10 @@ beforeEach(async () => {
   }
 })
 
-afterAll(async () => {
-  await mongo.stop()
-  await mongoose.connection.close()
-})
+// afterAll(async () => {
+//   await mongo.stop()
+//   await mongoose.connection.close()
+// })
 
 global.signin = async (): Promise<string[]> => {
   const email = 'test@test.com'

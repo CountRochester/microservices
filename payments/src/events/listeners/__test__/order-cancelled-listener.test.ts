@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { Message } from 'node-nats-streaming';
-import { OrderStatus, OrderCancelledEvent } from '@cygnetops/common';
+import { orderStatuses, OrderCancelledEvent } from '@cr-tickets/common';
 import { OrderCancelledListener } from '../order-cancelled-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Order } from '../../../models/order';
@@ -9,8 +9,8 @@ const setup = async () => {
   const listener = new OrderCancelledListener(natsWrapper.client);
 
   const order = Order.build({
-    id: mongoose.Types.ObjectId().toHexString(),
-    status: OrderStatus.Created,
+    id: new mongoose.Types.ObjectId().toHexString(),
+    status: orderStatuses[0],
     price: 10,
     userId: 'asldkfj',
     version: 0,
@@ -40,7 +40,7 @@ it('updates the status of the order', async () => {
 
   const updatedOrder = await Order.findById(order.id);
 
-  expect(updatedOrder!.status).toEqual(OrderStatus.Cancelled);
+  expect(updatedOrder!.status).toEqual(orderStatuses[1]);
 });
 
 it('acks the message', async () => {

@@ -9,7 +9,7 @@ declare global {
   // eslint-disable-next-line vars-on-top, no-var
   var signin: ({ email, id }?: { email: string, id: string }) => string[]
 }
-jest.mock('../nats-wrapper.ts')
+jest.mock('../nats-wrapper')
 jest.setTimeout(30000)
 
 let mongo!: MongoMemoryServer
@@ -30,10 +30,10 @@ beforeEach(async () => {
   }
 })
 
-afterAll(async () => {
-  await mongo.stop()
-  await mongoose.connection.close()
-})
+// afterAll(async () => {
+//   await mongo.stop()
+//   await mongoose.connection.close()
+// })
 
 global.signin = ({ email, id }: { email: string, id: string } = { email: 'test@test.com', id: 'test' }): string[] => {
   const jwtPayload = { email, id }

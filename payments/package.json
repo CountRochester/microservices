@@ -5,15 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "test": "jest --watchAll --no-cache",
-    "test:ci": "jest"
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "testEnvironment": "node",
-    "setupFilesAfterEnv": [
-      "./src/test/setup.ts"
-    ]
+    "test": "jest --watchAll --no-cache --detectOpenHandles --forceExit",
+    "test:ci": "jest --no-cache --detectOpenHandles --forceExit"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +30,7 @@
     "typescript": "4.5.5"
   },
   "devDependencies": {
+    "@jest/types": "^27.5.1",
     "@types/jest": "^27.4.0",
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.10.0",

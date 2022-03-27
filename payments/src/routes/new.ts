@@ -54,7 +54,10 @@ router.post(
       stripeId: payment.stripeId,
     })
 
-    res.status(201).send({ id: payment.id })
+    res
+      .status(201)
+      .contentType('application/json')
+      .send({ id: payment.id })
   }
 )
 
