@@ -12,6 +12,7 @@ declare global {
 }
 
 let mongo!: MongoMemoryServer
+jest.setTimeout(30000)
 
 beforeAll(async () => {
   mongo = await MongoMemoryServer.create()
