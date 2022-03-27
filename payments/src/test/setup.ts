@@ -33,10 +33,10 @@ beforeEach(async () => {
   }
 })
 
-afterAll(async () => {
-  await mongo.stop()
-  await mongoose.connection.close()
-})
+// afterAll(async () => {
+//   await mongo.stop()
+//   await mongoose.connection.close()
+// })
 
 global.signin = ({ email, id }: { email: string, id: string } = { email: 'test@test.com', id: 'test' }): string[] => {
   const jwtPayload = { email, id }
